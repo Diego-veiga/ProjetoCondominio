@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import blocoController from '../controllers/blocoController';
+import loginRequired from '../middleware/loginRequired';
 
 const router = new Router();
 
-router.get('/', blocoController.index);
-router.get('/:id', blocoController.show);
-router.post('/', blocoController.store);
-router.put('/:id', blocoController.update);
-router.delete('/:id', blocoController.delete);
+router.get('/', loginRequired, blocoController.index);
+router.get('/:id', loginRequired, blocoController.show);
+router.post('/', loginRequired, blocoController.store);
+router.put('/:id', loginRequired, blocoController.update);
+router.delete('/:id', loginRequired, blocoController.delete);
 
 export default router;
